@@ -8,6 +8,7 @@ services:
     env_file: .env
     volumes:
       - pg_data_production:/var/lib/postgresql/data
+    restart: always
   backend:
     image: egorushinsa/taski_backend
     env_file: .env
@@ -15,6 +16,7 @@ services:
       - static_volume:/backend_static
     depends_on:
       - db
+    restart: always
   frontend:
     image: egorushinsa/taski_frontend
     env_file: .env
@@ -31,3 +33,4 @@ services:
     depends_on:
       - backend
       - frontend
+    restart: always
